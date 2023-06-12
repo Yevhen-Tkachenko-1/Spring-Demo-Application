@@ -16,13 +16,16 @@ public class ApplicationConfig {
 
     @Value("${app.greeting}")
     private String greeting;
-
     @Value("${app.name}")
     private String name;
+    @Value("#{new String(environment['spring.profiles.active'])}")
+    private String activeProfileName;
+    @Value("#{environment['spring.profiles.active'] == 'prod'}")
+    private boolean isFormat;
 
     @Bean
     public GreetingService greetingService(){
-        return new GreetingService(greeting);
+        return new GreetingService(greeting, isFormat);
     }
 
     @Bean
@@ -40,6 +43,6 @@ public class ApplicationConfig {
     @Bean
     public OutputService outputService(@Autowired GreetingService greetingService,
                                        @Autowired TimeService timeService){
-        return new OutputService(greetingService, timeService, name);
+        return new OutputService(greetingService, timeService, name, activeProfileName);
     }
 }
