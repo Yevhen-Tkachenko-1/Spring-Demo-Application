@@ -1,13 +1,18 @@
 package com.yevhent.springdemo.service;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
 public class GreetingService {
 
-    private final String greeting;
-    private final boolean isFormat;
+    @Value("${app.greeting}")
+    private String greeting;
+    @Value("#{environment['spring.profiles.active'] == 'prod'}")
+    private boolean isFormat;
 
-    public GreetingService(String greeting, boolean isFormat) {
-        this.greeting = greeting;
-        this.isFormat = isFormat;
+    public GreetingService() {
+        System.out.println("GreetingService creation ...");
     }
 
     public String getGreeting(String name) {

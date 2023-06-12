@@ -1,17 +1,24 @@
 package com.yevhent.springdemo.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
 public class OutputService {
 
     private final GreetingService greetingService;
     private final TimeService timeService;
-    private final String name;
-    private final String activeProfileName;
+    @Value("${app.name}")
+    private String name;
+    @Value("#{new String(environment['spring.profiles.active'])}")
+    private String activeProfileName;
 
-    public OutputService(GreetingService greetingService, TimeService timeService, String name, String activeProfileName) {
+    @Autowired
+    public OutputService(GreetingService greetingService, TimeService timeService) {
+        System.out.println("OutputService creation ...");
         this.greetingService = greetingService;
         this.timeService = timeService;
-        this.name = name;
-        this.activeProfileName = activeProfileName;
     }
 
     public void generateOutput() {

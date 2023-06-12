@@ -8,12 +8,17 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class SpringDemoApplication {
 
     public static void main(String[] args) throws Exception {
-        ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-        OutputService outputService = context.getBean(OutputService.class);
+        System.out.println("main() method start");
 
-        for (int i = 0; i < 5; i++) {
+        ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        System.out.println("ApplicationContext created");
+        OutputService outputService = context.getBean(OutputService.class);
+        System.out.println("OutputService instance is available");
+
+        for (int i = 0; i < 3; i++) {
             outputService.generateOutput();
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         }
+        System.out.println("main() method end");
     }
 }
