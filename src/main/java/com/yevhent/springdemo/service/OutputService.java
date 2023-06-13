@@ -22,7 +22,10 @@ public class OutputService {
     }
 
     public void generateOutput() {
-        String output = String.format("[%s] [%s] [%s]", timeService.getCurrentTime(), activeProfileName, greetingService.getGreeting(name));
-        System.out.println(output);
+        try {
+            String output = String.format("[%s] [%s] [%s]", timeService.getCurrentTime(), activeProfileName, greetingService.getGreeting(name));
+            System.out.println(output);
+        } catch (Exception e) {
+        }
     }
 }

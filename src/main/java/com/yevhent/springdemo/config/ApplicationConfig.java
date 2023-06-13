@@ -4,12 +4,14 @@ import com.yevhent.springdemo.service.TimeService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "com.yevhent.springdemo")
+@EnableAspectJAutoProxy
 public class ApplicationConfig {
 
     @Profile("dev")
