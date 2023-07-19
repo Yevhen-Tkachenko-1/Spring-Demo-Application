@@ -10,7 +10,7 @@ Topics covered:
 - AOP, implementing custom aspect
 
 Implemented based on LinkedIn learning course:
-[Spring: Framework in Depth](https://www.linkedin.com/learning/spring-framework-in-depth-2/building-blocks-of-spring)
+[Spring: Framework in Depth](https://www.linkedin.com/learning/spring-framework-in-depth-2)
 
 ### Tech stack
 
